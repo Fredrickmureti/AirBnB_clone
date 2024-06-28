@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Unittest module for the User Class."""
+"""Unittest module for the Amenity Class."""
 
 import unittest
 from datetime import datetime
 import time
-from models.user import User
+from models.amenity import Amenity
 import re
 import json
 from models.engine.file_storage import FileStorage
@@ -13,9 +13,9 @@ from models import storage
 from models.base_model import BaseModel
 
 
-class TestUser(unittest.TestCase):
+class TestAmenity(unittest.TestCase):
 
-    """Test Cases for the User class."""
+    """Test Cases for the Amenity class."""
 
     def setUp(self):
         """Sets up test methods."""
@@ -33,17 +33,17 @@ class TestUser(unittest.TestCase):
             os.remove(FileStorage._FileStorage__file_path)
 
     def test_8_instantiation(self):
-        """Tests instantiation of User class."""
+        """Tests instantiation of Amenity class."""
 
-        b = User()
-        self.assertEqual(str(type(b)), "<class 'models.user.User'>")
-        self.assertIsInstance(b, User)
+        b = Amenity()
+        self.assertEqual(str(type(b)), "<class 'models.amenity.Amenity'>")
+        self.assertIsInstance(b, Amenity)
         self.assertTrue(issubclass(type(b), BaseModel))
 
     def test_8_attributes(self):
-        """Tests the attributes of User class."""
-        attributes = storage.attributes()["User"]
-        o = User()
+        """Tests the attributes of Amenity class."""
+        attributes = storage.attributes()["Amenity"]
+        o = Amenity()
         for k, v in attributes.items():
             self.assertTrue(hasattr(o, k))
             self.assertEqual(type(getattr(o, k, None)), v)
